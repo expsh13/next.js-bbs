@@ -8,19 +8,25 @@ import {
   CardHeader,
   CardTitle,
 } from "@/app/components/ui/card";
+import { BBSData } from "@/app/types/types";
 
-export const BBSCard = () => {
+type PropsType = {
+  data: BBSData;
+};
+
+export const BBSCard = ({ data }: PropsType) => {
+  const { id, username, title, content } = data;
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card Description</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{username}</CardDescription>
       </CardHeader>
       <CardContent>
-        <p>Card Content</p>
+        <p>{content}</p>
       </CardContent>
       <CardFooter>
-        <Link className="text-blue-500" href={"/bbs-posts/1"}>
+        <Link className="text-blue-500" href={`/bbs-posts/${id}`}>
           Read More
         </Link>
       </CardFooter>
